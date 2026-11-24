@@ -2,7 +2,7 @@
 
 namespace Engine
 {
-	public unsafe class VkQueue(uint index, Queue queue)
+	public unsafe class VkQueue(uint index, Queue queue) : IDisposable
 	{
 		public static DeviceQueueCreateInfo MakeMainCreateInfo(VkInstance instance, PhysicalDevice device, out uint queueFamilyIndex)
 		{
@@ -40,5 +40,10 @@ namespace Engine
 			
 		public readonly uint index = index;
 		public readonly Queue queue = queue;
+		
+		public void Dispose()
+		{
+			// TODO release managed resources here
+		}
 	}
 }
